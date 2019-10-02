@@ -1,0 +1,272 @@
+/*create following structure
+struct book
+{
+	char bid[5];
+	char name[30];
+	int price;
+};
+ask user how many records he wants to create and accordingly allocate memory.
+accept values from user and display.
+( Hint :-  use  "new" operator)*/
+//#include<iostream>
+//using namespace std;
+//
+//struct book
+//{
+//	char bid[5];
+//	char name[30];
+//	int price;
+//};
+//int main()
+//{
+//	book *ptr;
+//	int req;
+//	 cout<<"Enter no of records"<<endl;
+//	cin>>req;
+//	 ptr=new book[req];
+//
+//	for(int i=0;i<req;i++)
+//	{
+//		cin>>ptr[i].bid>>ptr[i].name>>ptr[i].price;
+//	}
+//	for(int i=0;i<req;i++)
+//	{
+//		cout<<ptr[i].bid<<" "<<ptr[i].name<<" "<<ptr[i].price<<endl;
+//	}
+//}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//3) create a structure "Employee" 
+//with members 
+//	int id
+//	char name[20];
+//	char desig[20];
+//now access it using
+//a) array 
+//b) DMA
+
+//#include<iostream>
+//using namespace std;
+//struct Employee
+//{
+//	int id;
+//	char name[20];
+//	char desig[20];
+//};
+//int main()
+//{
+//	Employee e[3];
+//	 cout<<"Enter no of records"<<endl;
+//
+//	 for(int i=0;i<3;i++)
+//	{
+//		cin>>e[i].id>>e[i].name>>e[i].desig;
+//	}
+//	for(int i=0;i<3;i++)
+//	{
+//		cout<<e[i].id<<" "<<e[i].name<<" "<<e[i].desig<<endl;
+//	}
+//
+//}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//5) given
+//	void disp(int); function.
+//
+//now create a function pointer and call this function using function pointer.
+
+//#include<iostream>
+//using namespace std;
+//void disp(int a)
+//{
+//	cout<<a<<endl;
+//}
+//int main()
+//{
+//	void (*ptr)(int);
+//	ptr=disp;
+//	ptr(30);
+//
+//}
+////////////////////////////////////////////////////////////////////////////////////
+
+/*7) accept from user how many initials he has in his name, 
+	now allocate a memory accordingly and accept his initial. [use new operator]*/
+
+//#include<iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int req;
+//
+//	cout<<"Enter no of initials"<<endl;
+//	cin>>req;
+//	
+//	char *ch=new char[req+1];
+//	cout<<"Enter values"<<endl;
+//	for(int i=0;i<req;i++)
+//	{
+//		cin>>ch[i];
+//	}
+//	for(int i=0;i<req;i++)
+//	{
+//		cout<<ch[i];
+//	}
+//}
+////////////////////////////////////////////////////////////////////////////////////////
+//
+//8) write a function which can accept minimum 3 characters and maximum 5 characters and display them. ( use "default arguments")
+
+//#include<iostream>
+//using namespace std;
+//
+//void disp(char ch,char ch1,char ch2,char ch3='A',char ch4='B' )
+//{
+//	cout<<ch<<"\t"<<ch1<<"\t"<<ch2<<"\t"<<ch3<<"\t"<<ch4<<endl;
+//
+//}
+//
+//int main()
+//{
+//	disp('C','D','E');
+//	disp('C','D','E','F');
+//	disp('C','D','E','F','G');
+//}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//9)write a function which will return reference of structure.
+//( note:- any structure of ur choice u can define )
+//
+//#include<iostream>
+//using namespace std;
+//
+//struct Employee
+//{
+//	int id;
+//	char name[20];
+//	char desig[20];
+//}emp={1,"Ketan","CEO"},emp2={1,"Ketan","CEO"};
+//
+//Employee &disp()
+//{ 
+//	return emp2;
+//}
+//
+//
+//int main()
+//{
+//	Employee emp1={2,"Nikhil","SeniorDev"};
+//	cout<<emp1.id<<" "<<emp1.name<<" "<<emp1.desig<<endl;
+//	Employee &ptr=disp();
+//	cout<<ptr.id<<" "<<ptr.name<<" "<<ptr.desig;
+//}
+////////////////////////////////////////////////////////////////////////////
+
+//10)write a function which takes 3 arguments
+//variable, pointer and a reference.(any datatype)
+//invoke this function and show how "call by value","call by address" and "call by reference" will work.
+
+//#include<iostream>
+//using namespace std;
+//
+//int disp(int a,int *b,int &c)
+//{
+//	a=11;
+//	*b=20;
+//	//c=13;
+//	return a;
+//}
+//int main()
+//{
+//	int a=10;
+//	int aa=12;
+//	int &c=a;
+//	disp(a,&aa,c);
+//	cout<<a<<" "<<aa<<" "<<c;
+//
+//}
+
+/*11)define 3 different structures and initialize their members.
+now write 3 different functions,but with the same name.
+these functions will accept each structure respectively and display their members.*/
+
+//#include<iostream>
+//using namespace std;
+//
+//struct A
+//{
+//	int a;
+//}a={10};
+//
+//struct B
+//{
+//	int b;
+//}b={100};
+//
+//struct C
+//{
+//	int c;
+//}c={1000};
+//
+// void disp(A &ref)
+// {
+//	 cout<<ref.a;
+// }
+//
+// void disp(B & ref1)
+// {
+//	 cout<<ref1.b;
+// }
+//
+// void disp(C &ref1)
+// {
+//	cout<<ref1.c;	 
+// }
+//
+// int main()
+// {
+//	 disp(a);
+//	 disp(b);
+//	 disp(c);
+// }
+////////////////////////////////////////////////////////////////////////
+
+//12) create a library in c in which,
+//write a function which will accept 2 numbers and return the difference between 2 numbers.
+//write appropriate header file.
+//
+//write c++ client code to access this library.
+//
+//
+//int diff(int a,int b)
+//{
+//	if(a>b)
+//	{
+//		return a-b;
+//	}
+//	else
+//		return b-a;
+//}
+//
+//
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
+//	int diff(int,int);
+//#ifdef __cplusplus
+//}
+//#endif;
+//
+//
+//#include<iostream>
+//using namespace std;
+//#include "D:\pk\dev\devpro\devpro\Header.h";
+//
+//int main()
+//{
+//	int a,b,c;
+//	cout<<"Enter 2 numbers";
+//	cin>>a>>b;
+//	c=diff(a,b);
+//	cout<<"Difference : "<<c;
+//}
+

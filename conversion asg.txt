@@ -1,0 +1,191 @@
+//1) class Hour
+//{
+//	private:
+//		int hr;
+//	public:
+//		parameterized constructor
+//		disp method
+//}
+//class Minute
+//{
+//	private:
+//		int mnt;
+//	public:
+//		parameterized constructor
+//		disp method
+//}
+//
+//write a program to convert minutes to hours.
+//(Use operator= for conversion.)
+//
+
+#include<iostream>
+using namespace std;
+class Minute;
+class Hour
+{
+	private:
+		float hr;
+	public:
+		Hour(float h)
+		{
+			this->hr=h;
+		}
+		void disp()
+		{
+			cout<<"In disp of Hour; Hours = "<<hr<<endl;
+		}
+		void operator=(Minute&);
+};
+
+class Minute
+{
+	private:
+		int mnt;
+	public:
+		Minute(int m)
+		{
+			this->mnt=m;
+		}
+		void disp()
+		{
+			cout<<"In disp of Minute"<<endl;
+		}
+		int getmin()
+		{
+			return mnt;
+		}
+};
+
+void Hour::operator=(Minute &ref)
+{
+	this->hr=(float)ref.getmin()/60;
+}
+
+int main()
+{
+	Hour h(1);
+	Minute m(100);
+	h=m;
+	h.disp();
+}
+
+======================================================================================
+2)write a number class with
+int num;
+void disp(){}
+
+u should be able to do following
+
+number n1(20);
+int k=-n1;
+
+n1+=5;
+n1.disp()
+
+number n2(35);
+if(n1!=n2)
+{
+	some message
+}
+
+
+
+number n3(12);
+
+if(n3 < n1)
+{
+	some message
+}
+
+number n4;
+
+n4=n2*n3;
+ - - - - - - - - - - - - - - - - - - - - - 
+#include<iostream>
+using namespace std;
+
+class Number
+{
+		int num;
+public:
+        
+        Number(){}
+        
+		Number(int n)
+		{
+			num=n;
+		}
+		void disp()
+		{
+			cout<<"Calculation = "<<this->num<<endl;
+		}
+		
+
+	    operator int()
+	    {
+	        return num;
+	    }
+
+		Number operator+=(int k)
+		{
+		    num+=k;
+		    return *this;
+		}
+		
+		Number* operator->(){
+		    return this;
+		}
+		
+		
+		bool operator!=(Number &ref)
+		{
+            return this->num!=ref.num; 	    
+		}
+		
+		bool operator <(Number ref)
+		{
+		    return num < ref.num;
+		}
+		
+		Number operator *(Number &ref)
+		{
+		    return Number(num*ref.num);
+		}
+		
+};
+
+int main()
+{
+	Number n1(20);
+	int k = -n1;
+	cout<<"Value : "<<k<<endl;
+	n1.disp();
+	
+	n1+=5;
+	n1.disp();
+
+    Number n2(35);
+    if(n1!=n2)
+    {
+        cout<<"Matched"<<endl;
+    }
+    else
+    {
+        cout<<"Not Matched"<<endl;
+    }
+    
+    Number n3(12);
+    if(n3<n1)
+    {
+        cout<<endl<<"n3 is Less than "<<endl;
+    }
+    else
+    {
+        cout<<endl<<" is Greator than "<<endl;
+    }
+    
+    Number n4;
+    n4=n2*n3;
+    n4.disp();
+}

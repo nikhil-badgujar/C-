@@ -1,0 +1,420 @@
+//1) create a class with constructors and destructors.
+//create array of instances and observe how program behaves.
+//
+//#include<iostream>
+//using namespace std;
+//class MyClass
+//{
+//	private:
+//		int num;
+//		char ch;
+//	public:
+//		MyClass()
+//		{
+//			cout<<"Inside default Const"<<endl;
+//		}
+//		
+//		~MyClass()
+//		{
+//			cout<<"Inside Dest"<<" "<<num<<" "<<ch<<endl;
+//		}
+//
+//		inline void setNum(int num);
+//		int getNum();
+//		
+//		inline void setChar(char ch);
+//		char getChar();
+//		
+//};
+//
+//inline void MyClass::setNum(int k)
+//		{
+//			this->num=k;
+//		}
+//int MyClass::getNum()
+//		{
+//			return num;
+//		}
+//inline void MyClass::setChar(char c)
+//		{
+//			this->ch=c;
+//		}
+//
+//
+//
+//char MyClass::getChar()
+//		{
+//			return ch;
+//		}
+//int main()
+//{
+//	MyClass m[3];
+//	int num;
+//	char ch;
+//	cout<<"enter different values\n";
+//	for(int i=0;i<3;i++)
+//	{
+//		cin>>num>>ch;
+//		m[i].setNum(num);
+//		m[i].setChar(ch);
+//	}
+//	for(int i=0;i<3;i++)
+//	{
+//		cout<<endl<<m[i].getNum()<<" "<<m[i].getChar()<<endl;
+//	}
+//}
+//-----------------------------------------------------------------------------------------
+//#include<iostream>
+//using namespace std;
+//class MyClass
+//{
+//	private:
+//		int num;
+//		char ch;
+//	public:
+//		MyClass()
+//		{
+//			cout<<"Inside default Const"<<endl;
+//		}
+//		
+//		~MyClass()
+//		{
+//			cout<<"Inside Dest"<<" "<<num<<" "<<ch<<endl;
+//		}
+//
+//		void setNum(int num)
+//		{
+//			this->num=num;
+//		}
+//		int getNum()
+//		{
+//			return num;
+//		}
+//		
+//		void setChar(char ch)
+//		{
+//			this->ch=ch;
+//		}
+//
+//		char getChar()
+//		{
+//			return ch;
+//		}
+//};
+//
+//
+//int main()
+//{
+//
+//	MyClass m[3];
+//	int num;
+//	char ch;
+//	cout<<"enter different values\n";
+//	for(int i=0;i<3;i++)
+//	{
+//		cin>>num>>ch;
+//		m[i].setNum(num);
+//		m[i].setChar(ch);
+//	}
+//	for(int i=0;i<3;i++)
+//	{
+//		cout<<endl<<m[i].getNum()<<" "<<m[i].getChar()<<endl;
+//	}
+//}
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//2) create a class with constructors and destructor.
+//create 2 instances on stack and 1 instance on heap. observe the invocation of constructors and destructors.
+
+//#include<iostream>
+//using namespace std;
+//class Demo
+//{
+//private:int num1;
+//		char *ch;
+//
+//public:
+//		Demo()
+//	   {
+//		  cout<<"In def constr"<<endl;
+//	   }
+//	   ~Demo()
+//	   {
+//		   cout<<"In Distr"<<endl;
+//	   }
+//	   Demo(int k,char *ch)
+//	   {
+//		   this->num1=k;
+//		   this->ch=ch;
+//		   cout<<"In para constr"<<num1<<endl;
+//	   }
+//};
+//int main()
+//{
+//	Demo d2;
+//	Demo d1(40,"tejas");
+//	Demo *d3=new Demo(34,"ketan"); 
+//	delete d3;
+//}
+
+//////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//3)create a class "MyClass1"
+//with members and member function "disp1().
+//create another class "MyClass2"
+//with members and member function "disp2().
+//now try to invoke disp1() from disp2()
+//in the main() function, create instances of both the classes and invoke their member functions.
+
+//#include<iostream>
+//using namespace std;
+//
+//class Myclass1
+//{
+//private:	
+//	int num;
+//public:
+//	Myclass1()
+//	{
+//		
+//	}
+//	void disp1()
+//	{
+//		cout<<"In Myclass1 Disp1"<<" "<<num<<endl;
+//	}
+//	Myclass1(int k)
+//	{
+//		this->num=k;
+//	}
+//	
+//};
+//
+//class Myclass2
+//{
+//private:
+//	int num1;
+//public:
+//	Myclass2()
+//	{
+//		
+//	}
+//	
+//	void disp2(Myclass1 &ref)
+//	{
+//		ref.disp1();
+//		cout<<"In Myclass2 Disp2"<<" "<<num1<<endl;
+//	}
+//	Myclass2(int k)
+//	{
+//		this->num1=k;
+//	}
+//};
+//
+//int main()
+//{
+//	Myclass1 m1(10);
+//	Myclass2 m2(100);
+//	m1.disp1();
+//	m2.disp2(m1);
+//}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*4) create a class.
+accept from user, how many instances are required.
+Accordingly create array of instances dynamically.
+Now make sure that u call destructor for each and every instances*/
+
+//#include<iostream>
+//using namespace std;
+//
+//class MyClass
+//{
+//	private:
+//		int num;
+//	public:
+//		MyClass()
+//		{
+//			cout<<"Iniside def const"<<endl;
+//		}
+//		void setNum(int num)
+//		{	
+//			this->num=num;
+//		}
+//		int getNum()
+//		{
+//			return num;
+//		}
+//		~MyClass()
+//		{
+//			cout<<"Inside Dest"<<" "<<num<<endl;
+//		}
+//};
+//int main()
+//
+//{
+//	int n,num;
+//
+//	cout<<"Enter Instances"<<endl;
+//	cin>>n;
+//
+//	MyClass *m=new MyClass[n];
+//	cout<<"enter  "<<n<<"  numbers"<<endl;
+//
+//	for(int i=0;i<n;i++)
+//	{
+//		cin>>num;
+//		m[i].setNum(num);
+//	}
+//	for(int i=0;i<n;i++)
+//	{
+//		cout<<endl<<m[i].getNum()<<endl;
+//	}
+//
+//		delete []m;
+//}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+//5) create a class, define different types of constructors. in main create n number of objects.
+//	At the end display how many constructors are created for a class.
+
+//#include<iostream>
+//using namespace std;
+//
+//class MyClass
+//{
+//	private:
+//		int num;
+//	public:
+//		static int cnt;
+//		MyClass()
+//		{
+//			cout<<"Iniside def const"<<endl;
+//			cnt++;
+//		}
+//		MyClass(int num)
+//		{
+//			this->num=num;
+//			cout<<"Iniside param const"<<endl;
+//			cnt++;
+//		}
+//		MyClass(MyClass &ref)
+//		{
+//			num=ref.num;
+//			cout<<"Inside copy const"<<endl;
+//			cnt++;
+//		}
+//		void setNum(int num)
+//		{	
+//			this->num=num;
+//		}
+//		int getNum()
+//		{
+//			return num;
+//		}
+//		static int getCnt()
+//		{
+//			return cnt;
+//		}
+//		~MyClass()
+//		{
+//			cout<<"Inside Dest"<<" "<<num<<endl;
+//			cnt--;
+//		}
+//};
+//int MyClass::cnt=0;
+//int main()
+//{
+//	
+//	MyClass m1;
+//	MyClass m2(10);
+//	MyClass m3=m1; 
+//	MyClass *m4=new MyClass;
+//	cout<<MyClass::getCnt()<<endl;
+//	MyClass *m5=new MyClass(300);
+//	MyClass();  // anonymous object on stack
+//	cout<<MyClass::getCnt()<<endl;
+//	new MyClass; // anonymous object on heap
+//	new MyClass(300);  // anonymous object on heap
+//	cout<<MyClass::getCnt()<<endl;
+//	delete m4;
+//	cout<<MyClass::getCnt()<<endl;
+//	delete m5;
+//	cout<<MyClass::getCnt()<<endl;
+//
+//}
+
+//////////////////////////////////////////////////////////////////////////////////
+//6) 
+//Developer Side
+//	create a class "book" with
+//		int bookid
+//		char *bookname
+//		int price
+//
+//	define parameterized constructor only for this class.
+//	define 3 getter functions.
+//
+//create necessary header and lib file and distribute it to the client.
+//
+//Client Side
+//
+//	 create 2 instances
+//	1 on stack and 1 on heap.
+//	pass the necessary values while creating instances.
+//	call the getter functions.
+//
+////////DEV-CPP///
+//#include<iostream>
+//#include "Header.h"
+//using namespace std;
+//book::book(int i,char *c,int p)
+//{
+//	this->bookid=i;
+//	bookname=new char[strlen(c)+1];
+//	strcpy(bookname,c);
+//	this->price=p;
+//}
+//int book::getbookid()
+//{
+//	return bookid;
+//}
+//char* book::getbookname()
+//{
+//	return bookname;
+//}
+//int book::getprice()
+//{
+//	return price;
+//}
+//book::~book()
+//{
+//	delete []bookname;
+//}
+//////DEV-Header////
+//class book
+//{
+//	private:
+//		int bookid;
+//		char *bookname;
+//		int price;
+//
+//	public:
+//		book(int,char *,int);
+//		int getbookid();
+//		char *getbookname();
+//		int getprice();
+//		~book();
+//};
+/////Client-Console///////
+//#include<iostream>
+//#include "E:\TASK\C++\client\Header.h"
+//using namespace std;
+//int main()
+//{
+//	book b1(10,"LetUs",600);
+//	book *b2=new book(2,"Java",800);
+//	cout<<endl<<b1.getbookid()<<" "<<b1.getbookname()<<" "<<b1.getprice()<<endl;
+//	cout<<b2->getbookid()<<" "<<b2->getbookname()<<" "<<b2->getprice()<<endl;
+//}
+////////////////////////////////////////////////////////////////////////////////////////////

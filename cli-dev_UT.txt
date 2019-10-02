@@ -1,0 +1,103 @@
+console window:
+
+#include<iostream>
+#include "D:\Nikhil_Workspace\client\Header.h "
+using namespace std;
+
+int main()
+{
+	Employee e1(501,"Kabir","Manager",65000);
+	e1.disp();
+	Employee e2=e1;
+	e2.disp();
+	Employee e3;
+}
+
+------------------------------------------------------
+developear side:
+
+Header.h:
+
+class Employee
+{
+private:
+		int id;
+		char *name;
+		char *design;
+		double sal;
+public:
+		Employee();
+		Employee(int,char*,char*,double);
+		Employee(Employee&);
+		~Employee();
+		int getid();
+		char* getname();
+		char* getdesign();
+		double getsal();
+		void disp();
+};
+
+- - - - - - - - - - - - - - - - - 
+
+Source.cpp:
+
+#include<iostream>
+using namespace std;
+#include "D:\Nikhil_Workspace\developer\devpro\devpro\Header.h"
+
+Employee::Employee()
+{
+	id = 0 ;
+	name = NULL ;
+	design = NULL ;
+	sal = 0 ;
+	cout<<"Inside Default "<<endl;
+}
+Employee::Employee(int a, char *n, char *d, double s)
+{
+	this->id = a;
+	name = new char[strlen(n)+1];
+	strcpy(name,n);
+	design = new char[strlen(d)+1];
+	strcpy(design,d);
+	this->sal = s;
+	cout<<"Inside Parameterized"<<endl;
+}
+Employee::Employee(Employee &ref)
+{
+	id=ref.id;
+	name = new char[strlen(ref.name)+1];
+	strcpy(name,ref.name);
+	design = new char[strlen(ref.design)+1];
+	strcpy(design,ref.design);
+	sal=ref.sal;
+	cout<<"Inside Copy Constr"<<endl;
+}
+Employee::~Employee()
+{
+	delete []name;
+	delete []design;
+	cout<<"Inside Destructor"<<endl;
+}
+int Employee::getid()
+{
+	return id;
+}
+char *Employee::getname()
+{
+	return name;
+}
+char *Employee::getdesign()
+{
+	return design;	
+}
+double Employee::getsal()
+{
+	return sal;	
+}
+void Employee::disp()
+{
+	if(name != NULL && design != NULL)
+	cout<<id<<" "<<name<<" "<<design<<" "<<sal<<endl;
+}
+
