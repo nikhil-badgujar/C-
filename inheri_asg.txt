@@ -1,0 +1,502 @@
+#include<iostream>
+using namespace std;
+//1)
+//class base
+//{
+//	public:
+//		base(char *ptr)
+//		{
+//		}
+//};
+//class sub:public base
+//{
+//};
+//
+//Following statements should be possible
+//
+//sub s;
+//
+//sub *s1=new sub(40);
+//
+//sub *s2=new sub('a',4.5);
+//*********************************
+//#include<iostream>
+//using namespace std;
+//
+//class base
+//{
+//	char c[20];
+//public :
+//		base(char *ptr)
+//		{
+//			strcpy(c,ptr);
+//			cout<<c<<endl;
+//		}
+//};
+//
+//class sub:public base
+//{
+//	float num;
+//	char ch;
+//public :
+//		sub():base("Hello")
+//		{
+//			cout<<"Inside sub's no-arg constr"<<endl;
+//		}
+//		sub(int n):base("World")
+//		{
+//			this->num=n;
+//			cout<<"Inside sub-param constr "<<n<<endl;
+//		}
+//		sub(char c, float f):base("Welcome")
+//		{
+//			this->ch=c;
+//			this->num=f;
+//			cout<<"Inside sub-param2 constr "<<c<<" "<<f<<endl;
+//		}
+//		void disp2()
+//		{
+//		cout<<num<<" "<<ch<<endl;
+//		}
+//};
+//
+//int main()
+//{
+//	sub s;
+//	sub *s1=new sub(40);
+//	sub *s2=new sub('a',4.5);
+//}
+
+//======================================================================//
+
+//2) 
+//class parent
+//{
+//	public:
+//		disp1()
+//		disp2()
+//		disp3()
+//		disp4()
+//};
+//class sub:private parent
+//{
+//	public:
+//		disp5()
+//};
+//
+//make sure u can do the following
+//
+//sub s(30);
+//s.disp5();
+//s.disp3();
+//s.disp1();
+//****************************************
+
+//#include<iostream>
+//using namespace std;
+//
+//class parent
+//{
+//	public:
+//		void disp1()
+//		{
+//			cout<<"Inside disp1"<<endl;
+//		}
+//		void disp2()
+//		{
+//			cout<<"Inside disp2"<<endl;
+//		}
+//		void disp3()
+//		{
+//			cout<<"Inside disp3"<<endl;
+//		}
+//		void disp4()
+//		{
+//			cout<<"Inside disp4"<<endl;
+//		}
+//};
+//class sub:private parent
+//{
+//	public:
+//		sub(int k)
+//		{
+//			cout<<"Value : "<<k<<endl;
+//		}
+//		void disp5()
+//		{
+//			cout<<"Inside disp5"<<endl;
+//		}
+//		parent::disp3;
+//		parent::disp1;
+//};
+//
+//int main()
+//{
+//	sub s(30);
+//	s.disp5();
+//	s.disp3();
+//	s.disp1();
+//}
+
+//======================================================================//
+
+//3) 
+//class course
+//{
+//	//here
+//};
+//class DacCourse:public course
+//{
+//	// here
+//};
+//
+//you should be able to say following
+//
+//course *c=new course;
+//c->fees(); // course version should be called
+//c=new DacCourse;
+//c->fees();  // DacCourse version should be called
+//****************************************
+
+//class course
+//{
+//public:
+//		virtual void fees()
+//		{
+//			cout<<"Fees for Course"<<endl;
+//		}
+//};
+//class DacCourse:public course
+//{
+//public:	
+//		void fees()
+//		{
+//			cout<<"Fees of DacCourse"<<endl;
+//		}
+//};
+//
+//int main()
+//{
+//course *c=new course;
+//c->fees(); // course version should be called
+//c=new DacCourse;
+//c->fees();  // DacCourse version should be called
+//}
+
+//======================================================================//
+
+//4) 
+//Create a base class FourWheeler. Declare pure virtual function 
+//“void start()” in it. 			
+//Define following sub classes for this class. 
+//A) Qualis b) Sumo c) Volvo 					
+//Define “start” function in these classes.	
+//In main function , create array of pointer to FourWheeler which will 
+//contain objects of these three sub classes. 
+//Now traverse the array and call all the child class methods.
+
+//****************************************
+
+//class fourwheeler
+//{
+//public:		virtual void start()=0;
+//};
+//class Qualis:public fourwheeler
+//{
+//	void start()
+//	{
+//		cout<<"Qualis Started"<<endl;
+//	}
+//};
+//class Sumo:public fourwheeler
+//{
+//	void start()
+//	{
+//		cout<<"Sumo Started"<<endl;
+//	}
+//};
+//class Volvo:public fourwheeler
+//{
+//	void start()
+//	{
+//		cout<<"Volvo Started"<<endl;
+//	}
+//};
+//
+//int main()
+//{
+//	fourwheeler *arr[3]={new Qualis,new Sumo,new Volvo};
+//	for(int i=0;i<3;i++)
+//	{
+//		arr[i]->start();
+//	}
+//
+//}
+
+//======================================================================//
+
+//5)
+//define a class “mynum” having a member variable “int num” and “void disp()”;	
+//	from main function, perform following				
+//	a) mynum m1(20);
+//  b) m1=100; //do not use constructor for this purpose			
+//	c) int k;						
+//	d) k=m1;							
+//	e) cout<<endl<<k<<endl;
+
+//****************************************
+
+//class mynum
+//{
+//	int num;
+//public:
+//		mynum(int k)
+//		{
+//			cout<<"Inside Mynum no-arg const"<<endl;
+//		}
+//		void operator=(int k)
+//		{
+//			this->num=k;
+//			cout<<"Value is : "<<k<<endl;
+//		}
+//		operator int()
+//		{
+//			return num;
+//		}
+//};
+//
+//int main()
+//{
+//    mynum m1(20);	
+//    m1=100; //Do not use Constructor for this purpose			
+//	int k;						
+//	k=m1;							
+//	cout<<endl<<"Value of k: "<<k<<endl;
+//}
+
+//======================================================================//
+
+//6) create a base1 and base2 classes in the library.
+//constructors, member variables and functions you can have in the above classes
+// of your choice.
+
+//now create an application where you have to create a child class of above 
+//classes.
+//in the main function create an instance of child class and try to access 
+//methods of base1 and base2.
+
+
+===============Developer-side(Header.h)==================
+
+class base1
+{
+	int num;
+public:
+		base1();
+		base1(int);
+		base1(char*,int);
+		void disp1();
+};
+
+class base2
+{
+	int num1;
+public:
+		base2();
+		base2(int);
+		base2(char*,int);
+		void disp2();
+};
+
+==================Developer-side.cpp=====================
+
+#include<iostream>
+using namespace std;
+#include "C:\Users\nikhil\Documents\Visual Studio 2012\Projects\Nikhil_Woprkspace\practice\cli-dev\dev\devpro\devpro\Header.h"
+
+base1::base1()
+{
+	cout<<"Inside base1 no-arg"<<endl;
+}
+base1::base1(int k)
+{
+	cout<<"Inside base1 param, Num= "<<k<<endl;
+}
+base1::base1(char *p,int k)
+{
+	cout<<"Inside base1 2-param, Name= "<<p<<" Num= "<<k;
+}
+void base1::disp1()
+{
+	cout<<"Inside disp1() of Base1"<<endl;
+}
+
+
+base2::base2()
+{
+	cout<<endl<<"Inside base2 no-arg"<<endl;
+}
+base2::base2(int k)
+{
+	cout<<"Inside base2 param, Num= "<<k<<endl;
+}
+base2::base2(char *p,int k)
+{
+	cout<<"Inside base2 2-param, Name= "<<p<<" Num= "<<k;
+}
+void base2::disp2()
+{
+	cout<<"Inside disp1() of Base2"<<endl;
+}
+
+==================Console(cli-side)=====================
+#include<iostream>
+using namespace std;
+#include "C:\Users\nikhil\Documents\Visual Studio 2012\Projects\Nikhil_Woprkspace\practice\cli-dev\cli\Header.h"
+
+class child:public base1,public base2
+{
+public:
+		child()
+		{
+			cout<<endl<<"Inside child's no-arg"<<endl;
+		}
+		child(int k)
+		{
+			cout<<"Inside child's param Num= "<<k<<endl;
+		}
+		child(char *p,int k)
+		{
+			cout<<"Inside child's 2 param Name= "<<p<<" Num= "<<k<<endl;
+		}
+		void disp()
+		{
+			cout<<"Inside disp() of child";
+		}
+		base1::disp1;
+		base2::disp2;
+};
+
+int main()
+{
+	child c;
+	c.disp1();
+	c.disp2();
+	child c1(88);
+	child c2("Maaka",99);
+	child::base1("Potaos",44);
+	child::base2(9988);
+}
+
+//======================================================================//
+
+//7)
+//Create a base class “Subject”.Declare pure virtual function “void maxmarks()”
+//in it.  Define following sub classes for this class. A) Maths b) History c) 
+//	English. Define “maxmarks” in these classes.
+//
+//now write a global function "show" which will accept "subject class pointer" 
+//as an argument. this function should be able to call "maxmarks()" of any child 
+//class which is passed.
+//From main function try to call this function by passing various child classes.
+
+//class Subject
+//{
+//public:
+//		virtual void maxmarks()
+//		{
+//			cout<<"Inside Subject "<<endl;		
+//		}
+//};
+//
+//class Maths:public Subject
+//{
+//	void maxmarks()
+//	{
+//		cout<<"Marks of Maths"<<endl;
+//	}
+//};
+//
+//class History:public Subject
+//{
+//	void maxmarks()
+//	{
+//		cout<<"Marks of History"<<endl;
+//	}
+//};
+//
+//class English:public Subject
+//{
+//	void maxmarks()
+//	{
+//		cout<<"Marks of English"<<endl;
+//	}
+//};
+//
+//void show(Subject *ptr)
+//{
+//	ptr->maxmarks();
+//}
+//
+//int main()
+//{
+//	show(new Maths);
+//	show(new History);
+//	show(new English);
+	//show(new Subject);
+	//Maths m;	show(&m);   ---->" Worls "
+//}
+
+//======================================================================//
+
+//8) same as above except it has to be done using reference of parent class.
+
+
+//class Subject
+//{
+//public:
+//		virtual void maxmarks()
+//		{
+//			cout<<"Inside Subject "<<endl;		
+//		}
+//};
+//
+//class Maths:public Subject
+//{
+//	void maxmarks()
+//	{
+//		cout<<"Marks of Maths"<<endl;
+//	}
+//};
+//
+//class History:public Subject
+//{
+//	void maxmarks()
+//	{
+//		cout<<"Marks of History"<<endl;
+//	}
+//};
+//
+//class English:public Subject
+//{
+//	void maxmarks()
+//	{
+//		cout<<"Marks of English"<<endl;
+//	}
+//};
+//
+//void show(Subject &ref)
+//{
+//	ref.maxmarks();
+//}
+//
+//int main()
+//{
+//	Maths m;
+//	History h;
+//	English e;
+//	show(m);
+//	show(h);
+//	show(e);
+//      show(new Maths);	--->" Will give ErroR "
+//}
