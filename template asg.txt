@@ -1,0 +1,261 @@
+1) write a function template,which can accept anything as an argument and 
+display it.
+It can also accept "Emp" class object as an argument.
+Now overload this function template, for int.
+
+---------Header.h---------
+
+#include<iostream>
+using namespace std;
+
+template<class type>
+void disp(type k)
+	{
+		cout<<"Inside disp, Num = "<<k<<endl;
+	}
+
+
+class emp
+{
+	int num;
+public:
+		emp(int k);
+		int getnum();
+				
+		friend ostream& operator<<(ostream&, emp &);
+};
+
+emp::emp(int k)
+{
+	this->num=k;
+}
+int emp::getnum()
+{
+	return num;
+}
+ostream& operator<<(ostream &o, emp &ref)
+{
+	o<<ref.num;
+	return o;
+}
+
+=============cli=============
+
+#include<iostream>
+#include "Header.h"
+using namespace std;
+
+int main()
+{
+	emp e(100);
+	cout<<e;
+	disp(5151);
+}
+
+//========================================================================//
+
+2) write a function template,which can accept argument as any type of array
+( char,int or double) and sort it in ascending order.
+
+
+---------Header.h---------
+
+#include<iostream>
+using namespace std;
+
+template<class type>
+void Sort(type *p, int size)
+{
+	type temp;
+	int i,j;
+	for(i=0;i<size-1;i++)
+	{
+		for	(j=i+1;j<size;j++)
+		{
+			if(p[i]>p[j])
+			{
+				temp = p[i];
+				p[i] = p[j];
+				p[j]= temp;
+			}
+		}
+	}
+}
+
+
+
+=============cli=============
+
+#include<iostream>
+#include "d:\cli\Header.h"
+using namespace std;
+
+
+int main()
+{
+	int arr[5]={56,98,13,98,37};
+	Sort(arr,5);
+	for(int i=0;i<5;i++)
+	{
+		cout<<arr[i]<<endl;
+	}
+	
+	char arr1[]={'q','p','s','r','t'};
+	Sort(arr1,5);
+	cout<<endl;
+	for(int i=0;i<5;i++)
+	{
+		cout<<arr1[i]<<endl;
+	}
+
+	double arr2[]={5454,5453.99,98989,6556.45,19908};
+	Sort(arr2,5);
+	cout<<endl;
+	for(int i=0;i<5;i++)
+	{
+		cout<<arr2[i]<<endl;
+	}
+}
+
+//========================================================================//
+
+3) write a function template which will accept 3 different types of argument
+ and return the total size of arguments passed.
+
+---------Header.h---------
+
+#include<iostream>
+using namespace std;
+
+template<class type1,class type2,class type3>
+int getsize(type1 t1,type2 t2,type3 t3)
+{
+	return sizeof(t1)+sizeof(t2)+sizeof(t3);
+}
+
+=============cli=============
+
+#include<iostream>
+#include "C:\cli\Header.h"
+using namespace std;
+
+int main()
+{
+	cout<<getsize(100,'Z',9899.99)<<endl;
+}
+
+
+//========================================================================//
+
+4) write a class template , which can take any generic type display it and 
+return the size of type passed.
+(hint : in this class template write two functions void disp() and int size() ).
+
+---------Header.h---------
+
+template <class type>
+class Myclass
+{
+	type k;
+public:
+		Myclass(type k)
+		{
+			this->k=k;
+		}
+		void disp(type k)
+		{
+			cout<<endl<<k<<endl;
+		}
+		int size()
+		{
+			return sizeof(k);
+		}
+};
+
+
+=============cli=============
+
+#include<iostream>
+#include"C:\cli\Header.h"
+using namespace std;
+
+int main()
+{
+	Myclass<int> m(5151);
+	m.disp();
+	cout<<m.size();
+	Myclass<char> m1('Z');
+	m1.disp();
+	cout<<m1.size();
+	Myclass<double> m2(8989.499);
+	m2.disp();
+	cout<<m2.size();
+}
+
+//========================================================================//
+
+5) define a function template inside a class,which will display any given type.
+
+---------Header.h---------
+
+class Myclass
+{
+public:
+		Myclass();
+
+		template<class type>
+		void disp(type t)
+		{
+			cout<<"Entered: "<<t<<endl;
+		}
+		void disp1();
+};
+
+---------cpp------------
+
+#include<iostream>
+#include"Header.h"
+using namespace std;
+
+Myclass::Myclass()
+{
+	cout<<"Inside Def constr";
+}
+
+void Myclass::disp1()
+{
+	cout<<"Inside disp1"<<endl;
+}
+
+=============cli=============
+
+#include<iostream>
+#include"C:\cli\Header.h"
+using namespace std;
+
+int main()
+{
+	Myclass m;
+	m.disp1();
+	m.disp(100);
+	m.disp('Z');
+	m.disp(5151.59);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
